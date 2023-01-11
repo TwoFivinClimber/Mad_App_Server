@@ -1,0 +1,16 @@
+[
+  {
+    "model": "mad_api.user",
+    "pk": 1,
+    "fields": {
+      "uid": "utjkCI3TjzUqgWQFzzTwCDgTVRd2",
+      "name": "Brett Hughes",
+      "image": "http://res.cloudinary.com/twofiveclimb/image/upload/v1664024552/mad-app/cr69tv9cqzzppqasqkj5.jpg",
+      "tag": "Just grinding out this app",
+      "location": "Nashville, TN",
+      "lat": 36.23988,
+      "long": -86.63777,
+      "age": 36
+    }
+  }
+]

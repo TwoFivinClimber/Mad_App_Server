@@ -1,0 +1,86 @@
+[
+  {
+    "model": "mad_api.category",
+    "pk": 1,
+    "fields": {
+      "name": "Art"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 2,
+    "fields": {
+      "name": "Bar"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 3,
+    "fields": {
+      "name": "Fittness"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 4,
+    "fields": {
+      "name": "Food"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 5,
+    "fields": {
+      "name": "Music"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 6,
+    "fields": {
+      "name": "Nightlife"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 7,
+    "fields": {
+      "name": "Outdoors"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 8,
+    "fields": {
+      "name": "Party"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 9,
+    "fields": {
+      "name": "Shopping"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 10,
+    "fields": {
+      "name": "Sports"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 11,
+    "fields": {
+      "name": "Tourism"
+    }
+  },
+  {
+    "model": "mad_api.category",
+    "pk": 12,
+    "fields": {
+      "name": "Home Body"
+    }
+  }
+]

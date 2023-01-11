@@ -1,0 +1,44 @@
+[
+  {
+    "model": "mad_api.daytime",
+    "pk": 1,
+    "fields": {
+      "name":"Morning"
+    }
+  },
+  {
+    "model": "mad_api.daytime",
+    "pk": 2,
+    "fields": {
+      "name":"Day Time"
+    }
+  },
+  {
+    "model": "mad_api.daytime",
+    "pk": 3,
+    "fields": {
+      "name":"Afternoon"
+    }
+  },
+  {
+    "model": "mad_api.daytime",
+    "pk": 4,
+    "fields": {
+      "name":"Evening"
+    }
+  },
+  {
+    "model": "mad_api.daytime",
+    "pk": 5,
+    "fields": {
+      "name":"Night"
+    }
+  },
+  {
+    "model": "mad_api.daytime",
+    "pk": 6,
+    "fields": {
+      "name":"Late Night"
+    }
+  }
+]
