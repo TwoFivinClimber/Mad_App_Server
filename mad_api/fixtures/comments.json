@@ -1,0 +1,62 @@
+[
+  {
+    "model": "mad_api.comment",
+    "pk": 1,
+    "fields": {
+      "uid": 1,
+      "date": "2023-01-01",
+      "event": 1,
+      "content": "Update:  These Cats are crazy"
+    }
+  },
+  {
+    "model": "mad_api.comment",
+    "pk": 2,
+    "fields": {
+      "uid": 1,
+      "date": "2023-01-02",
+      "event": 1,
+      "content": "Actually they are very cute and I love them"
+    }
+  },
+  {
+    "model": "mad_api.comment",
+    "pk": 3,
+    "fields": {
+      "uid": 1,
+      "date": "2023-01-05",
+      "event": 2,
+      "content": "This was one of the best meals I've had in Nashville"
+    }
+  },
+  {
+    "model": "mad_api.comment",
+    "pk": 4,
+    "fields": {
+      "uid": 1,
+      "date": "2023-01-06",
+      "event": 3,
+      "content": "NYC is so beautiful to visit.  Watch out for the rats"
+    }
+  },
+  {
+    "model": "mad_api.comment",
+    "pk": 5,
+    "fields": {
+      "uid": 1,
+      "date": "2023-01-07",
+      "event": 4,
+      "content": "Not seen here, Adam got drunk and hit on Anthony"
+    }
+  },
+  {
+    "model": "mad_api.comment",
+    "pk": 6,
+    "fields": {
+      "uid": 1,
+      "date": "2023-01-08",
+      "event": 4,
+      "content": "I'm terrible at the fooze, Underwood destroyed me"
+    }
+  }
+]

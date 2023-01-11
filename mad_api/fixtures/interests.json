@@ -1,0 +1,26 @@
+[
+  {
+    "model": "mad_api.interest",
+    "pk": 1,
+    "fields": {
+      "category": 3,
+      "uid": 1
+    }
+  },
+  {
+    "model": "mad_api.interest",
+    "pk": 2,
+    "fields": {
+      "category": 7,
+      "uid": 1
+    }
+  },
+  {
+    "model": "mad_api.interest",
+    "pk": 3,
+    "fields": {
+      "category":4,
+      "uid": 1
+    }
+  }
+]

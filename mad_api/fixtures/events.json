@@ -1,0 +1,58 @@
+[
+  {
+    "model": "mad_api.event",
+    "pk": 1,
+    "fields": {
+      "uid": 1,
+      "title": "A day with the Cats",
+      "description": "These are some of the many funny poses that my cats do when just lying around the house",
+      "date": "2022-12-20",
+      "daytime": 2,
+      "category": 12,
+      "rating": 80,
+      "public": true
+    }
+  },
+  {
+    "model": "mad_api.event",
+    "pk": 2,
+    "fields": {
+      "uid": 1,
+      "title": "Birthday Dinner",
+      "description": "Went to Sean Brock's old place to see if it's still worth it",
+      "date": "2022-01-09",
+      "daytime": 5,
+      "category": 4,
+      "rating": 95,
+      "public": true
+    }
+  },
+  {
+    "model": "mad_api.event",
+    "pk": 3,
+    "fields": {
+      "uid": 1,
+      "title": "The sights of New York City",
+      "description": "Spent the day walking around NYC, figured I's share some pics of the places I saw",
+      "date": "2022-07-12",
+      "daytime": 2,
+      "category": 11,
+      "rating": 75,
+      "public": true
+    }
+  },
+  {
+    "model": "mad_api.event",
+    "pk": 4,
+    "fields": {
+      "uid": 1,
+      "title": "Hanging with The Boys",
+      "description": "Some early night bar hangs with my dudes.  Beer, Foozeball, Pool, and good times",
+      "date": "2022-10-15",
+      "daytime": 4,
+      "category": 2,
+      "rating": 100,
+      "public": true
+    }
+  }
+]
