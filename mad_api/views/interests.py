@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from rest_framework import serializers
-from mad_api.models import Interest, User
+from rest_framework import serializers, status
+from mad_api.models import Interest, User, Category
 
 class InterestView(ViewSet):
     '''User Interest Views'''
@@ -20,7 +20,25 @@ class InterestView(ViewSet):
         serialized = InterestSerializer(user_interests, many=True)
       
         return Response(serialized.data)
-  
+      
+    def create(self, request):
+        '''handels creation of user interests'''
+        
+        user = User.objects.get(pk=request.data['uid'])
+        interests = request.data['interests']
+        
+        existing_interests = Interest.objects.filter(uid = user)
+        
+        if existing_interests is not None:
+            for interest in existing_interests:
+                interest.delete()
+        
+        if interests is not None:
+            for category in interests:
+              
+                Interest.objects.create(category=Category.objects.get(pk=category), uid=user)
+        
+        return Response(None, status.HTTP_204_NO_CONTENT)
 
 class InterestSerializer(serializers.ModelSerializer):
 

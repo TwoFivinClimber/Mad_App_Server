@@ -7,10 +7,14 @@ class CategoryView(ViewSet):
     '''Category View'''
       
     def list(self, request):
-      
+        '''returns ctaegories formatted for react select menu'''
         categories = Category.objects.all()
       
         categories_serialized = CategorySerializer(categories, many=True)
+        
+        for category in categories_serialized.data:
+            category['value'] = category.pop('id')
+            category['label'] = category.pop('name')
       
         return Response(categories_serialized.data)
 

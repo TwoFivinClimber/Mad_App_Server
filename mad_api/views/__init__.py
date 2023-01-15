@@ -3,3 +3,6 @@ from .users import UserView
 from .events import EventView
 from .categories import CategoryView
 from .interests import InterestView
+from .daytime import DaytimeView
+from .comments import CommentView
+from .locations import LocationView

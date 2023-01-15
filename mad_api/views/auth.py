@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from mad_api.models import User
+from mad_api.models import User, Interest, Category
 
 
 @api_view(['POST'])
@@ -21,7 +21,9 @@ def check_user(request):
 @api_view(['POST'])
 def register_user(request):
     '''handels creation of new user'''
+    
     user = User.objects.create(
+      uid=request.data['uid'],
       name=request.data['name'],
       image=request.data['image'],
       tag=request.data['tag'],
@@ -30,6 +32,13 @@ def register_user(request):
       long=request.data['long'],
       age=request.data['age']
     )
+    
+    interests = request.data['interests']
+    
+    if interests is not None:
+        for interest in interests:
+            Interest.objects.create(uid = User.objects.get(uid=user.uid), category= Category.objects.get(pk = interest))
+        
     
     data = {
       'id': user.id,

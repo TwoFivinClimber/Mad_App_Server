@@ -66,10 +66,20 @@ class EventView(ViewSet):
         event.public = request.data['public']
         event.category = category
         event.daytime = daytime
-        
         event.save()
         
-        return Response(None, status.HTTP_204_NO_CONTENT)  
+        photo_urls = request.data['photos']
+        existing_photos = list(Photo.objects.filter(event = event))
+          
+        if existing_photos is not None:
+            for photo in existing_photos:
+                photo.delete()
+        
+        if photo_urls is not None:
+            for photo in photo_urls:
+                Photo.objects.create(url = photo, event = event)
+        
+        return Response(None, status.HTTP_204_NO_CONTENT)
     
     def destroy(self, request, pk):
         '''handels DELETE of event'''

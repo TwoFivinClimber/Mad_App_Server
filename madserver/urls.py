@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
-from mad_api.views import check_user, register_user, UserView, EventView, CategoryView, InterestView
+from mad_api.views import check_user, register_user, UserView, EventView, CategoryView, InterestView, DaytimeView, CommentView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', UserView, 'user')
 router.register(r'events', EventView, 'event')
 router.register(r'categories', CategoryView, 'category')
 router.register(r'interests', InterestView, 'interest')
+router.register(r'daytimes', DaytimeView, 'daytime')
+router.register(r'comments', CommentView, 'comment')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
