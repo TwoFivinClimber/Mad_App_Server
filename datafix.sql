@@ -1,2 +1,3 @@
-DELETE from mad_api_photo
-WHERE event_id = 7  
+UPDATE mad_api_event
+SET public = 0
+WHERE id=4

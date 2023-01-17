@@ -1,8 +1,10 @@
+import random
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from mad_api.models import Event, User, Category, Daytime, Photo
 
+      
 class EventView(ViewSet):
     '''Event type views'''
     
@@ -10,6 +12,19 @@ class EventView(ViewSet):
         '''handels GET all request'''
         
         events = Event.objects.all()
+        public = request.query_params.get('public')
+        user = request.query_params.get('uid')
+        featured = request.query_params.get('featured')
+        
+        if public is not None:
+            events = events.filter(public=public)
+        
+        if user is not None:
+            events = events.filter(uid=user)
+        
+        if featured is not None:
+
+            events = random.sample(list(events.filter(public=True)), 2)
         
         events_serialized = EventSerializer(events, many=True)
         
@@ -87,6 +102,7 @@ class EventView(ViewSet):
         event.delete()
         
         return Response(None, status.HTTP_204_NO_CONTENT)
+      
 
 class EventSerializer(serializers.ModelSerializer):
 

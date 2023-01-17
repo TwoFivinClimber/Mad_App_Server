@@ -15,7 +15,6 @@ def check_user(request):
         return Response(data)
     except:
       data = { 'valid': False }
-
       return Response(data)
          
 @api_view(['POST'])
