@@ -23,7 +23,6 @@ class EventView(ViewSet):
             events = events.filter(uid=user)
         
         if featured is not None:
-
             events = random.sample(list(events.filter(public=True)), 2)
         
         events_serialized = EventSerializer(events, many=True)
