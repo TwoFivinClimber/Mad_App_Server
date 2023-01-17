@@ -10,11 +10,13 @@ class Event(models.Model):
     uid = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
+    location = models.CharField(max_length=75)
+    lat = models.FloatField(null=True, default=None)
+    long = models.FloatField(null=True, default=None)
+    city = models.CharField(max_length=75)
     date = models.DateField()
     daytime = models.ForeignKey(Daytime, on_delete=models.DO_NOTHING)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
     rating = models.IntegerField()
     public = models.BooleanField()
-  
-    
     

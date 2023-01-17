@@ -10,5 +10,5 @@ class Comment(models.Model):
     date = models.DateField()
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
-    
+    edited = models.DateField(null=True, default=None)
     
