@@ -11,7 +11,14 @@ def check_user(request):
     try :
         user = User.objects.get(uid = uid)
         data = {
-          'id': user.id
+          'id': user.id,
+          'name': user.name,
+          'image': user.image,
+          'tag': user.tag,
+          'location': user.location,
+          'lat': user.lat,
+          'long': user.long,
+          'age': user.age
         }
         return Response(data)
     except ValidationError as ex:

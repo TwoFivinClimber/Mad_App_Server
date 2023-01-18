@@ -8,9 +8,9 @@ from mad_api.models import User, Interest, Category
 class UserView(ViewSet):
     '''User View'''
     def retrieve(self, request, pk):
-        '''returns single user'''   
+        '''returns single user'''
         user = User.objects.get(pk=pk)
-
+        
         user_serialized = UserSerializer(user)
         
         return Response(user_serialized.data)

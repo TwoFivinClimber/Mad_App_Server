@@ -5,3 +5,4 @@ from .categories import CategoryView
 from .interests import InterestView
 from .daytime import DaytimeView
 from .comments import CommentView
+from .photos import PhotoView

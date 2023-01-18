@@ -20,3 +20,12 @@ class Event(models.Model):
     rating = models.IntegerField()
     public = models.BooleanField()
     
+    @property
+    def photos(self):
+        '''will be used to return photos of event'''
+        return self.__photos
+
+    @photos.setter
+    def photos(self, value):
+        self.__photos=value
+    

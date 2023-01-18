@@ -3,6 +3,8 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from mad_api.models import Event, User, Category, Daytime, Photo
+from .photos import PhotoSerializer
+
 
       
 class EventView(ViewSet):
@@ -25,7 +27,13 @@ class EventView(ViewSet):
         if featured is not None:
             events = random.sample(list(events.filter(public=True)), 2)
         
+        for event in events:
+            photos = Photo.objects.filter(event=event)
+            photos_serialized = PhotoSerializer(photos, many=True)
+            event.photos = list(photos_serialized.data)
+        
         events_serialized = EventSerializer(events, many=True)
+        
         
         return Response(events_serialized.data)
     
@@ -33,6 +41,10 @@ class EventView(ViewSet):
         '''handels GET single event'''
         
         event = Event.objects.get(pk=pk)
+        
+        photos = Photo.objects.filter(event=event)
+        photos_serialized = PhotoSerializer(photos, many=True)
+        event.photos = list(photos_serialized.data)
         
         event_serialized = EventSerializer(event)
         
@@ -107,5 +119,5 @@ class EventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ('id', 'title', 'description', 'date', 'rating', 'public', 'category', 'uid', 'daytime')
+        fields = ('id', 'title', 'description', 'location', 'lat', 'long', 'city', 'date', 'rating', 'public', 'category', 'uid', 'daytime', 'photos')
         depth = 1
