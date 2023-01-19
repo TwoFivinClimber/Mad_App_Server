@@ -13,4 +13,12 @@ class User(models.Model):
     lat = models.FloatField()
     long = models.FloatField()
     age = models.IntegerField()
-    
+
+    @property
+    def interests(self):
+        '''used to return users interests'''
+        return self.__interests
+
+    @interests.setter
+    def interests(self, value):
+        self.__interests=value

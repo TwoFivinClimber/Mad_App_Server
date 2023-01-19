@@ -45,3 +45,4 @@ class InterestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Interest
         fields = ('id', 'category', 'uid')
+        depth = 1
