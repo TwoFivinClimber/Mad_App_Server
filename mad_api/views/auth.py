@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 from mad_api.models import User, Interest, Category
 
 
@@ -10,12 +11,20 @@ def check_user(request):
     try :
         user = User.objects.get(uid = uid)
         data = {
-          'id': user.id
+          'id': user.id,
+          'uid': uid,
+          'name': user.name,
+          'image': user.image,
+          'tag': user.tag,
+          'location': user.location,
+          'lat': user.lat,
+          'long': user.long,
+          'age': user.age
         }
         return Response(data)
     except:
-      data = { 'valid': False }
-      return Response(data)
+        data = { 'valid': False }
+        return Response(data)
          
 @api_view(['POST'])
 def register_user(request):

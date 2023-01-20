@@ -4,13 +4,18 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from mad_api.models import User, Interest, Category
+from .interests import InterestSerializer
 
 class UserView(ViewSet):
     '''User View'''
     def retrieve(self, request, pk):
-        '''returns single user'''   
+        '''returns single user'''
         user = User.objects.get(pk=pk)
-
+        
+        interests = Interest.objects.filter(uid = user)
+        interestst_serialized = InterestSerializer(interests, many=True)
+        user.interests = interestst_serialized.data
+        
         user_serialized = UserSerializer(user)
         
         return Response(user_serialized.data)
@@ -38,7 +43,7 @@ class UserView(ViewSet):
         
         if interests is not None:
             for interest in interests:
-                Interest.objects.create(uid = user, category = Category.objects.get(pk = interest))  
+                Interest.objects.create(uid = user, category = Category.objects.get(pk = interest))
         
         return Response(None, status.HTTP_204_NO_CONTENT)
     
@@ -46,4 +51,4 @@ class UserView(ViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'uid', 'name', 'image', 'tag', 'location', 'lat', 'long', 'age')
+        fields = ('id', 'uid', 'name', 'image', 'tag', 'location', 'lat', 'long', 'age', 'interests')
