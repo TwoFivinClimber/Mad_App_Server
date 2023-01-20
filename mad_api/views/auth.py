@@ -12,6 +12,7 @@ def check_user(request):
         user = User.objects.get(uid = uid)
         data = {
           'id': user.id,
+          'uid': uid,
           'name': user.name,
           'image': user.image,
           'tag': user.tag,
@@ -21,9 +22,9 @@ def check_user(request):
           'age': user.age
         }
         return Response(data)
-    except ValidationError as ex:
+    except:
         data = { 'valid': False }
-        return Response(ex)
+        return Response(data)
          
 @api_view(['POST'])
 def register_user(request):

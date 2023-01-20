@@ -3,9 +3,8 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from mad_api.models import User, Interest, Category, Event
+from mad_api.models import User, Interest, Category
 from .interests import InterestSerializer
-from .events import EventSerializer
 
 class UserView(ViewSet):
     '''User View'''
@@ -52,4 +51,4 @@ class UserView(ViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'uid', 'name', 'image', 'tag', 'location', 'lat', 'long', 'age', 'interests', 'events')
+        fields = ('id', 'uid', 'name', 'image', 'tag', 'location', 'lat', 'long', 'age', 'interests')

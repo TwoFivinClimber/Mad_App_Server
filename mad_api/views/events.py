@@ -58,6 +58,7 @@ class EventView(ViewSet):
         daytime = Daytime.objects.get(pk=request.data['daytime'])
         photo_urls = request.data['photos']
         
+        
         event = Event.objects.create(
           title = request.data['title'],
           description = request.data['description'],
