@@ -47,6 +47,13 @@ class UserView(ViewSet):
         
         return Response(None, status.HTTP_204_NO_CONTENT)
     
+    def destroy(self, request, pk):
+        '''Handels deletion of user'''
+        user = User.objects.get(pk=pk)
+        
+        user.delete()
+        
+        return Response(None, status.HTTP_204_NO_CONTENT)
     
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

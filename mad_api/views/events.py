@@ -15,7 +15,7 @@ class EventView(ViewSet):
         
         events = Event.objects.all()
         public = request.query_params.get('public')
-        user = request.query_params.get('uid')
+        user = request.query_params.get('id')
         featured = request.query_params.get('featured')
         
         if public is not None:
@@ -53,10 +53,10 @@ class EventView(ViewSet):
     def create(self, request):
         '''handels POST reques for event'''
         
-        user = User.objects.get(uid=request.data['uid'])
+        user = User.objects.get(pk=request.data['id'])
         category = Category.objects.get(pk=request.data['category'])
         daytime = Daytime.objects.get(pk=request.data['daytime'])
-        photo_urls = request.data['photos']
+        photos = request.data['photos']
         
         
         event = Event.objects.create(
@@ -65,14 +65,18 @@ class EventView(ViewSet):
           date = request.data['date'],
           rating = request.data['rating'],
           public = request.data['public'],
+          location = request.data['location'],
+          city = request.data['city'],
+          lat = request.data['lat'],
+          long = request.data['long'],
           category = category,
           uid = user,
           daytime = daytime
         )
         
-        if photo_urls is not None:
-            for url in photo_urls:
-                photo = Photo(url = url, event=event)
+        if photos is not None:
+            for obj in photos:
+                photo = Photo(url = obj['url'], public_id = obj['publicId'], event=event)
                 photo.save()
         
         event_serialized = EventSerializer(event)
