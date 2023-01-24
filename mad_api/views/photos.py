@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from rest_framework import serializers
+from rest_framework import serializers, status
 from mad_api.models import Photo
 
 
@@ -18,10 +18,19 @@ class PhotoView(ViewSet):
             photos = photos.filter(event = event)
         
         photos_serialized = PhotoSerializer(photos, many=True)
+        returnPhotos = photos_serialized.data
+        for photo in returnPhotos:
+            photo['publicId'] = photo.pop('public_id')
         
-        return Response(photos_serialized.data)
+        return Response(returnPhotos)
+    
+    def destroy(self, request, pk): 
+        '''handels delete of photo'''
+        photo = Photo.objects.get(pk=pk)
+        photo.delete()
         
+        return Response(None, status.HTTP_204_NO_CONTENT)
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
-        fields = ('id', 'url', 'event')
+        fields = ('id', 'url', 'event', 'public_id')

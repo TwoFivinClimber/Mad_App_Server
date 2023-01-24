@@ -12,7 +12,10 @@ class DaytimeView(ViewSet):
         
         daytimes_serialized = DaytimeSerializer(daytimes, many=True)
 
-        
+        for daytime in daytimes_serialized.data:
+            daytime['value'] = daytime.pop('id')
+            daytime['label'] = daytime.pop('name')
+            
         return Response(daytimes_serialized.data)
     
     
