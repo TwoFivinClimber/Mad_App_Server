@@ -18,8 +18,11 @@ class PhotoView(ViewSet):
             photos = photos.filter(event = event)
         
         photos_serialized = PhotoSerializer(photos, many=True)
+        returnPhotos = photos_serialized.data
+        for photo in returnPhotos:
+            photo['publicId'] = photo.pop('public_id')
         
-        return Response(photos_serialized.data)
+        return Response(returnPhotos)
     
     def destroy(self, request, pk): 
         '''handels delete of photo'''

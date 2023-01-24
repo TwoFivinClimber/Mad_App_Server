@@ -18,6 +18,10 @@ class EventView(ViewSet):
         user = request.query_params.get('id')
         featured = request.query_params.get('featured')
         
+        if public is not None and user is not None:
+            events = events.filter(uid=user)
+            events.filter(public = public)
+            
         if public is not None:
             events = events.filter(public=public)
         
@@ -44,7 +48,10 @@ class EventView(ViewSet):
         
         photos = Photo.objects.filter(event=event)
         photos_serialized = PhotoSerializer(photos, many=True)
-        event.photos = list(photos_serialized.data)
+        return_photos = photos_serialized.data
+        for photo in return_photos:
+            photo['publicId'] = photo.pop('public_id')
+        event.photos = list(return_photos)
         
         event_serialized = EventSerializer(event)
         
@@ -93,6 +100,10 @@ class EventView(ViewSet):
         event.title = request.data['title']
         event.description = request.data['description']
         event.date = request.data['date']
+        event.location = request.data['location']
+        event.city = request.data['city']
+        event.lat = request.data['lat']
+        event.long = request.data['long']
         event.rating = request.data['rating']
         event.public = request.data['public']
         event.category = category
@@ -108,7 +119,7 @@ class EventView(ViewSet):
         
         if photo_urls is not None:
             for photo in photo_urls:
-                Photo.objects.create(url = photo, event = event)
+                Photo.objects.create(url = photo['url'], public_id = photo['publicId'], event=event)
         
         return Response(None, status.HTTP_204_NO_CONTENT)
     
